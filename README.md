@@ -18,7 +18,7 @@ Vision-language-action (VLA) models like RT-1, RT-2, OpenVLA, and Octo are train
 
 ## Our Solution
 
-O-VLA is a **universal middleware** that translates actions from ANY VLA to work on ANY robot—including robots the VLA has never seen.
+O-VLA is a **universal middleware** that translates actions from ANY VLA to work on ANY robot, including robots the VLA has never seen.
 
 ### Core Innovation: Semantic Primitive Learning
 
@@ -302,6 +302,7 @@ MIT License - see [LICENSE](LICENSE)
 
 **Ansh Bhansali**  
 anshbhansali5@gmail.com
+
 [anshbhansali.com](https://anshbhansali.com)
 
 ---
