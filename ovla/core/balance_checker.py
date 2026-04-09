@@ -227,14 +227,14 @@ class BalanceChecker:
 
 if __name__ == "__main__":
     import sys
-    sys.path.insert(0, '/scratch/anshb3/ovla')
+    
     
     print("="*70)
     print("TESTING REAL BALANCE CHECKER")
     print("="*70)
     
     # Test with G1 humanoid
-    urdf_path = '/scratch/anshb3/ovla/robots/unitree_ros/robots/g1_description/g1_23dof.urdf'
+    urdf_path = 'ovla/examples/robots/unitree_ros/robots/g1_description/g1_23dof.urdf'
     
     checker = BalanceChecker(urdf_path)
     

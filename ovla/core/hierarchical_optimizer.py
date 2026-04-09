@@ -164,15 +164,15 @@ class HierarchicalOptimizer:
 
 if __name__ == "__main__":
     import sys
-    sys.path.insert(0, '/scratch/anshb3/ovla')
+    
     
     print("="*70)
     print("HIERARCHICAL OPTIMIZER - 100% COMPLETE TEST")
     print("="*70)
     
     robots = [
-        ("Franka", "/scratch/anshb3/ovla/robots/franka/franka_simple.urdf"),
-        ("G1 Humanoid", "/scratch/anshb3/ovla/robots/unitree_ros/robots/g1_description/g1_23dof.urdf"),
+        ("Franka", "ovla/examples/robots/franka/franka_simple.urdf"),
+        ("G1 Humanoid", "ovla/examples/robots/unitree_ros/robots/g1_description/g1_23dof.urdf"),
     ]
     
     for robot_name, urdf_path in robots:

@@ -294,18 +294,18 @@ class TopologyBasedMorphologyParser:
 
 if __name__ == "__main__":
     import sys
-    sys.path.insert(0, '/scratch/anshb3/ovla')
+    
     
     print("TOPOLOGY-BASED MORPHOLOGY PARSER - FINAL")
     print("="*70)
     
     robots = [
-        ("Franka", "/scratch/anshb3/ovla/robots/franka/franka_simple.urdf"),
-        ("G1 Dual-Arm", "/scratch/anshb3/ovla/robots/unitree_ros/robots/g1_description/g1_dual_arm.urdf"),
-        ("G1 Humanoid", "/scratch/anshb3/ovla/robots/unitree_ros/robots/g1_description/g1_23dof.urdf"),
-        ("H1", "/scratch/anshb3/ovla/robots/unitree_ros/robots/h1_description/urdf/h1.urdf"),
-        ("Laikago", "/scratch/anshb3/ovla/robots/unitree_ros/robots/laikago_description/urdf/laikago.urdf"),
-        ("Spot", "/scratch/anshb3/ovla/robots/spot_ros/spot_description/urdf/spot.urdf.xacro"),
+        ("Franka", "ovla/examples/robots/franka/franka_simple.urdf"),
+        ("G1 Dual-Arm", "ovla/examples/robots/unitree_ros/robots/g1_description/g1_dual_arm.urdf"),
+        ("G1 Humanoid", "ovla/examples/robots/unitree_ros/robots/g1_description/g1_23dof.urdf"),
+        ("H1", "ovla/examples/robots/unitree_ros/robots/h1_description/urdf/h1.urdf"),
+        ("Laikago", "ovla/examples/robots/unitree_ros/robots/laikago_description/urdf/laikago.urdf"),
+        ("Spot", "ovla/examples/robots/spot_ros/spot_description/urdf/spot.urdf.xacro"),
     ]
     
     for name, urdf in robots:

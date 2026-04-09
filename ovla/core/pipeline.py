@@ -11,6 +11,7 @@ Full 7-layer architecture:
   Layer 4: Trajectory Generator
 """
 import numpy as np
+import os
 import torch
 from typing import Dict, Optional
 
@@ -61,7 +62,7 @@ class CompleteOVLAPipeline:
         ).to(self.device)
         
         self.universal_mapper.load_state_dict(
-            torch.load('/scratch/anshb3/ovla/models/universal_mapper_240k.pt')
+            torch.load(os.path.join(os.path.dirname(__file__), '../models/pretrained/universal_mapper_240k.pt'))
         )
         self.universal_mapper.eval()
         
@@ -71,7 +72,7 @@ class CompleteOVLAPipeline:
         ).to(self.device)
         
         self.strategy_mapper.load_state_dict(
-            torch.load('/scratch/anshb3/ovla/models/strategy_mapper_MASSIVE.pt')
+            torch.load(os.path.join(os.path.dirname(__file__), '../models/pretrained/strategy_mapper_MASSIVE.pt'))
         )
         self.strategy_mapper.eval()
         

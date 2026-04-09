@@ -195,7 +195,7 @@ class CollisionDetector:
 
 if __name__ == "__main__":
     import sys
-    sys.path.insert(0, '/scratch/anshb3/ovla')
+    
     from ovla.topology_morphology_parser import TopologyMorphologyParser
     
     print("="*70)
@@ -203,7 +203,7 @@ if __name__ == "__main__":
     print("="*70)
     
     # Test with G1 humanoid
-    urdf_path = '/scratch/anshb3/ovla/robots/unitree_ros/robots/g1_description/g1_23dof.urdf'
+    urdf_path = 'ovla/examples/robots/unitree_ros/robots/g1_description/g1_23dof.urdf'
     
     # Get morphology
     parser = TopologyMorphologyParser(urdf_path)
