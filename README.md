@@ -258,7 +258,7 @@ train_universal_mapper(
 ---
 
 ## Repository Structure
-'''
+```
 ovla/
 ├── core/                             # Complete pipeline implementation
 │   ├── semantic_extractor.py         # Layer 0 (analytical)
@@ -276,7 +276,7 @@ ovla/
 │   ├── quickstart/                   # Usage examples
 │   └── validation/                   # Test scripts
 └── docs/                             # Documentation
-'''
+```
 ---
 
 ## Citation
