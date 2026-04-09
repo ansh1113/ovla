@@ -32,22 +32,22 @@ Instead of learning robot-pair mappings, O-VLA learns **universal manipulation p
 
 ## Key Features
 
-✅ **Universal VLA Support**
+**Universal VLA Support**
 - RT-1, RT-2, OpenVLA, Octo validated
 - Auto-detects action formats (continuous, tokenized, chunked)
 - Works with any future VLA model
 
-✅ **Any Robot DOF**
+**Any Robot DOF**
 - Validated: 2-DOF to 23-DOF
 - Architecture supports up to 61-DOF
 - Works with arms, humanoids, mobile manipulators, exotic morphologies
 
-✅ **Zero-Shot Transfer**
+**Zero-Shot Transfer**
 - Trained on 50 robots
 - Generalizes to completely unseen robots
 - No retraining required
 
-✅ **Real-Time Performance**
+**Real-Time Performance**
 - ~0.5s end-to-end latency
 - Physics-based optimization
 - 50Hz smooth trajectory output
@@ -152,7 +152,7 @@ vla_action = np.array([[...], [...], ...])  # Multi-timestep
 - Velocity/acceleration smoothing
 - Output: Executable robot trajectory
 
-[→ Detailed architecture](docs/ARCHITECTURE.md)
+[Detailed architecture](docs/ARCHITECTURE.md)
 
 ---
 
@@ -162,10 +162,10 @@ vla_action = np.array([[...], [...], ...])  # Multi-timestep
 
 | VLA Model | Action Format | Validation |
 |-----------|---------------|------------|
-| OpenVLA | Continuous | ✅ Full integration |
-| Octo | Action Chunking | ✅ Multi-timestep |
-| RT-1 | Tokenized [0-255] | ✅ Auto-detection |
-| RT-2 | Tokenized [0-255] | ✅ Auto-detection |
+| OpenVLA | Continuous | Full integration |
+| Octo | Action Chunking | Multi-timestep |
+| RT-1 | Tokenized [0-255] | Auto-detection |
+| RT-2 | Tokenized [0-255] | Auto-detection |
 
 **100% success rate** across all tested VLA models.
 
@@ -173,14 +173,14 @@ vla_action = np.array([[...], [...], ...])  # Multi-timestep
 
 | Test | Source → Target | Result |
 |------|-----------------|--------|
-| Minimal | Any → 2-DOF | ✅ Pass |
-| Maximal | Any → 23-DOF | ✅ Pass |
-| Extreme Ratio | 5-DOF → 23-DOF | ✅ Pass |
-| Reverse | 23-DOF → 5-DOF | ✅ Pass |
-| Exotic: Snake | Any → 16-DOF | ✅ Pass |
-| Exotic: Hexapod | Any → 18-DOF | ✅ Pass |
+| Minimal | Any → 2-DOF | Pass |
+| Maximal | Any → 23-DOF | Pass |
+| Extreme Ratio | 5-DOF → 23-DOF | Pass |
+| Reverse | 23-DOF → 5-DOF | Pass |
+| Exotic: Snake | Any → 16-DOF | Pass |
+| Exotic: Hexapod | Any → 18-DOF | Pass |
 
-**Proven range:** 2-61 DOF (validated up to 23-DOF)
+**Proven range:** 2-61 DOF
 
 ### Zero-Shot Transfer
 
@@ -188,7 +188,7 @@ vla_action = np.array([[...], [...], ...])  # Multi-timestep
 - Successfully transfers to held-out robots
 - No per-robot fine-tuning required
 
-[→ Full validation results](docs/VALIDATION.md)
+[Full validation results](docs/VALIDATION.md)
 
 ---
 
@@ -259,32 +259,32 @@ train_universal_mapper(
 
 ## Repository Structure
 ovla/
-├── core/                          # Complete pipeline implementation
-│   ├── semantic_extractor.py      # Layer 0 (analytical)
-│   ├── strategy_extractor.py      # Layer 0.5
+├── core/                             # Complete pipeline implementation
+│   ├── semantic_extractor.py         # Layer 0 (analytical)
+│   ├── strategy_extractor.py         # Layer 0.5
 │   ├── universal_semantic_mapper.py  # Layer 1 (learned)
-│   ├── strategy_mapper.py         # Layer 1.5 (learned)
-│   ├── constraint_extractor.py    # Layer 2
-│   ├── hierarchical_optimizer.py  # Layer 3
-│   ├── whole_body_coordinator.py  # Layer 3
-│   ├── trajectory_generator.py    # Layer 4
-│   └── pipeline.py               # End-to-end pipeline
-├── models/pretrained/             # Pre-trained models (8.2MB)
+│   ├── strategy_mapper.py            # Layer 1.5 (learned)
+│   ├── constraint_extractor.py       # Layer 2
+│   ├── hierarchical_optimizer.py     # Layer 3
+│   ├── whole_body_coordinator.py     # Layer 3
+│   ├── trajectory_generator.py       # Layer 4
+│   └── pipeline.py                   # End-to-end pipeline
+├── models/pretrained/                # Pre-trained models
 ├── examples/
-│   ├── robots/                    # Example URDFs
-│   ├── quickstart/               # Usage examples
-│   └── validation/               # Test scripts
-└── docs/                         # Documentation
+│   ├── robots/                       # Example URDFs
+│   ├── quickstart/                   # Usage examples
+│   └── validation/                   # Test scripts
+└── docs/                             # Documentation
 
 ---
 
 ## Citation
 
 ```bibtex
-@misc{bhansali2025ovla,
+@misc{bhansali2026ovla,
   title={O-VLA: Universal Vision-Language-Action Transfer through Semantic Primitive Learning},
   author={Bhansali, Ansh},
-  year={2025},
+  year={2026},
   institution={University of Illinois Urbana-Champaign}
 }
 ```
@@ -300,9 +300,8 @@ MIT License - see [LICENSE](LICENSE)
 ## Contact
 
 **Ansh Bhansali**  
-MEng Autonomy & Robotics, UIUC  
-📧 anshb3@illinois.edu  
-🌐 [anshbhansali.com](https://anshbhansali.com)
+anshbhansali5@gmail.com
+[anshbhansali.com](https://anshbhansali.com)
 
 ---
 
