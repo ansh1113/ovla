@@ -14,11 +14,11 @@ setup(
     description="Universal Vision-Language-Action Transfer through Semantic Primitive Learning",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/anshb3/ovla",
+    url="https://github.com/ansh1113/ovla",
     project_urls={
-        "Bug Tracker": "https://github.com/anshb3/ovla/issues",
-        "Documentation": "https://github.com/anshb3/ovla",
-        "Source Code": "https://github.com/anshb3/ovla",
+        "Bug Tracker": "https://github.com/ansh1113/ovla/issues",
+        "Documentation": "https://github.com/ansh1113/ovla",
+        "Source Code": "https://github.com/ansh1113/ovla",
     },
     packages=find_packages(),
     classifiers=[
@@ -49,6 +49,7 @@ setup(
         "ovla": [
             "models/pretrained/*.pt",
             "examples/robots/**/*.urdf",
+            "training/*.py",
         ],
     },
 )
