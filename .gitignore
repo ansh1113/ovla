@@ -54,3 +54,8 @@ data/
 
 # Simulation
 *.log
+
+# Temporary fix scripts
+fix_*.py
+analyze_*.py
+debug_*.py
