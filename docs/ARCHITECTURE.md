@@ -8,8 +8,8 @@ O-VLA is a 7-layer pipeline that enables universal VLA-to-robot transfer through
 │                        Any VLA Model                            │
 │              (RT-1, RT-2, OpenVLA, Octo, etc.)                  │
 └────────────────────────┬────────────────────────────────────────┘
-│ N-DOF Action (any dimension)
-▼
+                         │ N-DOF Action (any dimension)
+                         ▼
 ┌─────────────────────────────────────────────────────────────────┐
 │  Layer 0: Semantic Extractor                                    │
 │  Purpose: Extract robot-agnostic semantic representation        │
@@ -23,8 +23,8 @@ O-VLA is a 7-layer pipeline that enables universal VLA-to-robot transfer through
 │  Works with: ANY URDF file, ANY action dimension                │
 │  Output: 128-dim semantic vector + natural language             │
 └────────────────────────┬────────────────────────────────────────┘
-│
-▼
+                         │
+                         ▼
 ┌─────────────────────────────────────────────────────────────────┐
 │  Layer 0.5: Strategy Extractor                                  │
 │  Purpose: Extract high-level task execution strategy            │
@@ -37,8 +37,8 @@ O-VLA is a 7-layer pipeline that enables universal VLA-to-robot transfer through
 │  ───────────────────────────────────────────────────────────    │
 │  Output: 64-dim strategy vector                                 │
 └────────────────────────┬────────────────────────────────────────┘
-│
-▼
+                         │
+                         ▼
 ┌─────────────────────────────────────────────────────────────────┐
 │  Layer 1: Universal Semantic Mapper                             │
 │  Purpose: Map source semantics to target robot                  │
@@ -57,8 +57,8 @@ O-VLA is a 7-layer pipeline that enables universal VLA-to-robot transfer through
 │  Key Innovation: Learns primitives, NOT robot pairs             │
 │  Output: Predicted semantics for target robot                   │
 └────────────────────────┬────────────────────────────────────────┘
-│
-▼
+                         │
+                         ▼
 ┌─────────────────────────────────────────────────────────────────┐
 │  Layer 1.5: Strategy Mapper                                     │
 │  Purpose: Cross-class strategy correction                       │
@@ -76,8 +76,8 @@ O-VLA is a 7-layer pipeline that enables universal VLA-to-robot transfer through
 │  Example: Fixed-base arm → Mobile humanoid (add stability)      │
 │  Output: Corrected strategy for target robot                    │
 └────────────────────────┬────────────────────────────────────────┘
-│
-▼
+                         │
+                         ▼
 ┌─────────────────────────────────────────────────────────────────┐
 │  Layer 2: Constraint Extractor                                  │
 │  Purpose: Extract physical constraints from target URDF         │
@@ -91,8 +91,8 @@ O-VLA is a 7-layer pipeline that enables universal VLA-to-robot transfer through
 │  ───────────────────────────────────────────────────────────    │
 │  Output: Complete constraint set for optimizer                  │
 └────────────────────────┬────────────────────────────────────────┘
-│
-▼
+                         │
+                         ▼
 ┌─────────────────────────────────────────────────────────────────┐
 │  Layer 3: Hierarchical Optimizer + Whole-Body Coordinator       │
 │  Purpose: Generate physically feasible joint trajectories       │
@@ -116,8 +116,8 @@ O-VLA is a 7-layer pipeline that enables universal VLA-to-robot transfer through
 │  ───────────────────────────────────────────────────────────    │
 │  Output: Optimized joint positions for target robot             │
 └────────────────────────┬────────────────────────────────────────┘
-│
-▼
+                         │
+                         ▼
 ┌─────────────────────────────────────────────────────────────────┐
 │  Layer 4: Trajectory Generator                                  │
 │  Purpose: Generate smooth executable trajectory                 │
@@ -132,8 +132,8 @@ O-VLA is a 7-layer pipeline that enables universal VLA-to-robot transfer through
 │  Output: (50, M) trajectory where M = target robot DOF          │
 │          50 timesteps at 50Hz = 1 second of motion              │
 └────────────────────────┬────────────────────────────────────────┘
-│ M-DOF Trajectory (any dimension)
-▼
+                         │ M-DOF Trajectory (any dimension)
+                         ▼
 ┌─────────────────────────────────────────────────────────────────┐
 │                      Target Robot Execution                     │
 │                         (Any Robot)                             │
@@ -210,7 +210,9 @@ O-VLA is a 7-layer pipeline that enables universal VLA-to-robot transfer through
 
 ### Universal Semantic Mapper (Layer 1)
 
-**Architecture:**Input (128-dim semantics)
+**Architecture:**
+```
+Input (128-dim semantics)
 ↓
 Graph Neural Network
 • Message passing over robot topology
@@ -222,6 +224,7 @@ Transformer
 • Cross-attention with robot structure
 ↓
 Output (128-dim target semantics)
+```
 
 **Training Objective:** Learn universal primitives that transfer across robots
 
@@ -233,12 +236,15 @@ Output (128-dim target semantics)
 
 ### Hierarchical Optimizer (Layer 3)
 
-**Optimization Problem:**minimize: ||q_target - q_desired||²
+**Optimization Problem:**
+```
+minimize: ||q_target - q_desired||²
 subject to:
 • q_min ≤ q ≤ q_max           (joint limits)
 • ||q̇|| ≤ v_max               (velocity limits)
 • CoM within support polygon  (stability)
 • No self-collisions          (safety)
+```
 
 **Solving Method:**
 - Sequential quadratic programming
@@ -279,20 +285,23 @@ subject to:
 
 The modular architecture allows easy extension:
 
-```pythonclass CustomLayer:
-def process(self, input_data):
-# Your processing logic
-return output_dataInsert into pipeline
+```
+pythonclass CustomLayer:
+   def process(self, input_data):
+   # Your processing logic
+   return output_dataInsert into pipeline
 pipeline.insert_layer(position=2.5, layer=CustomLayer())
+```
 
 ### Custom Primitives
 
 Train on your own manipulation primitives:
 
-```pythonfrom ovla.training import add_primitivesadd_primitives([
-"precise_insertion",
-"tool_use",
-"bimanual_assembly"
+```
+pythonfrom ovla.training import add_primitivesadd_primitives([
+   "precise_insertion",
+   "tool_use",
+   "bimanual_assembly"
 ])
 ```
 ---
