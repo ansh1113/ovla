@@ -2,8 +2,10 @@
 
 ## System Overview
 
-O-VLA is a 7-layer pipeline that enables universal VLA-to-robot transfer through semantic primitive learning.┌─────────────────────────────────────────────────────────────────┐
-│                        Any VLA Model                             │
+O-VLA is a 7-layer pipeline that enables universal VLA-to-robot transfer through semantic primitive learning.
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                        Any VLA Model                            │
 │              (RT-1, RT-2, OpenVLA, Octo, etc.)                  │
 └────────────────────────┬────────────────────────────────────────┘
 │ N-DOF Action (any dimension)
@@ -18,8 +20,8 @@ O-VLA is a 7-layer pipeline that enables universal VLA-to-robot transfer through
 │  • Workspace geometry computation                               │
 │  • Component activation detection                               │
 │  ───────────────────────────────────────────────────────────    │
-│  Works with: ANY URDF file, ANY action dimension               │
-│  Output: 128-dim semantic vector + natural language            │
+│  Works with: ANY URDF file, ANY action dimension                │
+│  Output: 128-dim semantic vector + natural language             │
 └────────────────────────┬────────────────────────────────────────┘
 │
 ▼
@@ -42,17 +44,17 @@ O-VLA is a 7-layer pipeline that enables universal VLA-to-robot transfer through
 │  Purpose: Map source semantics to target robot                  │
 │  Type: Learned (GNN + Transformer)                              │
 │  ───────────────────────────────────────────────────────────    │
-│  Architecture:                                                   │
+│  Architecture:                                                  │
 │    • Graph Neural Network (topology understanding)              │
 │    • Transformer (semantic mapping)                             │
 │    • 1.5M parameters                                            │
 │  ───────────────────────────────────────────────────────────    │
-│  Training:                                                       │
+│  Training:                                                      │
 │    • 240,000 samples                                            │
 │    • 60 universal primitives                                    │
 │    • 50 robot morphologies                                      │
 │  ───────────────────────────────────────────────────────────    │
-│  Key Innovation: Learns primitives, NOT robot pairs            │
+│  Key Innovation: Learns primitives, NOT robot pairs             │
 │  Output: Predicted semantics for target robot                   │
 └────────────────────────┬────────────────────────────────────────┘
 │
@@ -62,16 +64,16 @@ O-VLA is a 7-layer pipeline that enables universal VLA-to-robot transfer through
 │  Purpose: Cross-class strategy correction                       │
 │  Type: Learned (MLP)                                            │
 │  ───────────────────────────────────────────────────────────    │
-│  Architecture:                                                   │
+│  Architecture:                                                  │
 │    • Multi-layer perceptron                                     │
 │    • 625K parameters                                            │
 │  ───────────────────────────────────────────────────────────    │
-│  Training:                                                       │
+│  Training:                                                      │
 │    • 4,430 strategy examples                                    │
 │    • Multiple robot classes                                     │
 │  ───────────────────────────────────────────────────────────    │
 │  Purpose: Detect when execution requirements change             │
-│  Example: Fixed-base arm → Mobile humanoid (add stability)     │
+│  Example: Fixed-base arm → Mobile humanoid (add stability)      │
 │  Output: Corrected strategy for target robot                    │
 └────────────────────────┬────────────────────────────────────────┘
 │
@@ -81,7 +83,7 @@ O-VLA is a 7-layer pipeline that enables universal VLA-to-robot transfer through
 │  Purpose: Extract physical constraints from target URDF         │
 │  Type: URDF parser                                              │
 │  ───────────────────────────────────────────────────────────    │
-│  Extracts:                                                       │
+│  Extracts:                                                      │
 │    • Joint position limits                                      │
 │    • Joint velocity limits                                      │
 │    • Joint effort limits                                        │
@@ -92,7 +94,7 @@ O-VLA is a 7-layer pipeline that enables universal VLA-to-robot transfer through
 │
 ▼
 ┌─────────────────────────────────────────────────────────────────┐
-│  Layer 3: Hierarchical Optimizer + Whole-Body Coordinator      │
+│  Layer 3: Hierarchical Optimizer + Whole-Body Coordinator       │
 │  Purpose: Generate physically feasible joint trajectories       │
 │  Type: Physics-based optimization                               │
 │  ───────────────────────────────────────────────────────────    │
@@ -101,7 +103,7 @@ O-VLA is a 7-layer pipeline that enables universal VLA-to-robot transfer through
 │    • Multi-component synchronization                            │
 │    • Task priority assignment                                   │
 │  ───────────────────────────────────────────────────────────    │
-│  Hierarchical Optimizer (PyBullet):                            │
+│  Hierarchical Optimizer (PyBullet):                             │
 │    • Balance checking (will robot fall?)                        │
 │    • Collision detection (self-collision avoidance)             │
 │    • Inverse kinematics solving                                 │
@@ -121,22 +123,22 @@ O-VLA is a 7-layer pipeline that enables universal VLA-to-robot transfer through
 │  Purpose: Generate smooth executable trajectory                 │
 │  Type: Interpolation + smoothing                                │
 │  ───────────────────────────────────────────────────────────    │
-│  Process:                                                        │
+│  Process:                                                       │
 │    • Interpolate from current state to goal                     │
 │    • Velocity smoothing                                         │
 │    • Acceleration limiting                                      │
 │    • 50Hz trajectory generation                                 │
 │  ───────────────────────────────────────────────────────────    │
-│  Output: (50, M) trajectory where M = target robot DOF         │
+│  Output: (50, M) trajectory where M = target robot DOF          │
 │          50 timesteps at 50Hz = 1 second of motion              │
 └────────────────────────┬────────────────────────────────────────┘
 │ M-DOF Trajectory (any dimension)
 ▼
 ┌─────────────────────────────────────────────────────────────────┐
-│                      Target Robot Execution                      │
-│                         (Any Robot)                              │
+│                      Target Robot Execution                     │
+│                         (Any Robot)                             │
 └─────────────────────────────────────────────────────────────────┘
-
+```
 ---
 
 ## Key Design Principles
@@ -292,7 +294,7 @@ Train on your own manipulation primitives:
 "tool_use",
 "bimanual_assembly"
 ])
-
+```
 ---
 
 ## Implementation Notes
