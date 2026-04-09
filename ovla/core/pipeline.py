@@ -15,14 +15,14 @@ import os
 import torch
 from typing import Dict, Optional
 
-from ovla.semantic_extractor import SemanticExtractor
-from ovla.strategy_extractor import StrategyExtractor, TaskStrategy
-from ovla.universal_semantic_mapper import UniversalSemanticMapper, extract_urdf_graph_data
-from ovla.strategy_mapper import StrategyMapper
+from ovla.core.semantic_extractor import SemanticExtractor
+from ovla.core.strategy_extractor import StrategyExtractor, TaskStrategy
+from ovla.core.universal_semantic_mapper import UniversalSemanticMapper, extract_urdf_graph_data
+from ovla.core.strategy_mapper import StrategyMapper
 from ovla.constraint_extractor import GeometricConstraintNet
-from ovla.hierarchical_optimizer import HierarchicalOptimizer
+from ovla.core.hierarchical_optimizer import HierarchicalOptimizer
 from ovla.whole_body_coordinator import WholeBodyCoordinator
-from ovla.trajectory_generator import TrajectoryGenerator
+from ovla.core.trajectory_generator import TrajectoryGenerator
 from ovla.topology_morphology_parser import TopologyMorphologyParser
 
 
