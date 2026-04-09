@@ -10,7 +10,7 @@ setup(
     name="ovla",
     version="0.1.0",
     author="Ansh Bhansali",
-    author_email="anshb3@illinois.edu",
+    author_email="anshbhansali5@gmail.com",
     description="Universal Vision-Language-Action Transfer through Semantic Primitive Learning",
     long_description=long_description,
     long_description_content_type="text/markdown",
